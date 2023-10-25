@@ -54,21 +54,16 @@ class HomeController extends Controller{
     // film
     function show_anime_detail(Request $request){
         $film = DB::table("film")->where("id_film", $request->id)->get();
-        $comments = DB::table("comments")->join("users", "users.id", "=", "comments.id_user")->where("id_film", $request->id)->get();
+        // $comments = DB::table("comments")->join("users", "users.id", "=", "comments.id_user")->where("id_film", $request->id)->orderBy("date","DESC")->limit(4)->get();
         // dd(\Carbon\Carbon::parse($comments[0]->date)->format('H:i:s') );
-        if(auth::check()){
-            $user = $request->session()->get('user');
-            return view("FrontEnd.page.anime-detail",["categoris" => $this->categoris,
-                                                  "top_view"=>$this->arr_top,
-                                                  "comments"=>$comments,
-                                                  "user"=>$user,
-                                                  "film" => $film[0]]);
-        }else{
-            return view("FrontEnd.page.anime-detail",["categoris" => $this->categoris,
-                                                  "top_view"=>$this->arr_top,
-                                                  "comments"=>$comments,
-                                                  "film" => $film[0]]);
-        }      
+    
+        $user = $request->session()->get('user');
+        return view("FrontEnd.page.anime-detail",["categoris" => $this->categoris,
+                                                "top_view"=>$this->arr_top,
+                                                // "comments"=>$comments,
+                                                "user"=>$user,
+                                                "film" => $film[0]]);
+         
     }
 
     function show_anime_watch(Request $request){

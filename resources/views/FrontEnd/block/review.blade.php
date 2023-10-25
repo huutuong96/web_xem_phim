@@ -1,6 +1,5 @@
 
-        <div class="col-lg-8 col-md-8">
-            <div class="anime__details__review">
+
                 <div class="section-title">
                     <h5>Reviews</h5>
                 </div>
@@ -16,18 +15,3 @@
                         </div>
                     </div>
                 @endforeach
-                
-            </div>
-            <div class="anime__details__form">
-                <div class="section-title">
-                    <h5>Your Comment</h5>
-                </div>
-                <form action="{{ route('create-comment') }}" method="post">
-                    <textarea placeholder="Your Comment" name="content"></textarea>
-                    <input type="hidden" name="id_user" value="">           
-                    <input type="hidden" name="id_film" value="{{$film->id_film}}">
-                    <input type="hidden" name="role" value="0">
-                    <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                </form>
-            </div>
-        </div>

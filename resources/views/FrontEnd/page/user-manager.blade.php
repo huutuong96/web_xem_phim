@@ -14,7 +14,7 @@
 
 {{-- main content --}}
 @section('main_content')
-    <h3>trang quản lý user</h3>
+    <h3 style="color: aliceblue">trang quản lý user</h3>
 
 
 

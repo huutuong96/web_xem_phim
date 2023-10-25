@@ -4,6 +4,7 @@ use App\Http\Controllers\BackEnd\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\BackEnd\Dashboard;
+
 // use App\Http\Middleware\UserAthenticate;
 // use App\Http\Kernel;
 
@@ -38,7 +39,8 @@ Route::prefix('/')->group(function () {
     Route::get('contact',[HomeController::class, "show_contact"])->name('contact');
 
     //comment
-    Route::post("comments",[CommentController::class, "create"])->name("create-comment");
+    Route::get('comments',[CommentController::class, "index"])->name("all_comments");
+    Route::get('add_comment',[CommentController::class, "create"])->name("add_comment");
 });
 
 //back end

@@ -93,7 +93,21 @@
             </div>
             <div class="container">
                 <div class="row">
-                    @include('FrontEnd.block.review')
+                    <div class="col-lg-8 col-md-8" >
+                        <div class="anime__details__review" id="show_comment">
+                                {{-- binh luan dc show o day --}}
+                        </div>
+                         <div class="anime__details__form">
+                            <div class="section-title">
+                                <h5>Your Comment</h5>
+                            </div>
+                            <form action="#" >
+                                <textarea placeholder="Your Comment" name="content" id="input_content"></textarea>         
+                                <input type="hidden" id="comment_rule" name="rule" value="0">
+                                <button type="button" id="send_comment"><i class="fa fa-location-arrow"></i> Review</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="col-lg-4 col-md-6 col-sm-8">
                         <div class="product__sidebar"> 
                             @include('FrontEnd.block.right-top')
@@ -104,4 +118,33 @@
         </section>
         <!-- Anime Section End -->
 
+@endsection
+
+@section('link_js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            show_comment();
+
+                //send comment
+            $("#send_comment").click(function () {
+                var rule = $("#comment_rule").val();
+                var content = $("#input_content").val();
+                // alert("bình luận : "+content)
+                
+                $.get("{{route("add_comment")}}", {"id_film":{{$film->id_film}}, "rule": rule, "content": content}, function(data) { show_comment();});
+            })
+        })
+        function show_comment() {
+            $.get("{{route("all_comments")}}",{"id": {{$film->id_film}} },function (data) {
+                $("#show_comment").html(data);
+                })
+            $("#input_content").val("")
+        }
+        
+
+
+
+    </script>
 @endsection

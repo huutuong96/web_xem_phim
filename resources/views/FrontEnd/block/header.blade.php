@@ -4,14 +4,14 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="{{route('home')}}">
-                        <img src="{{asset('FrontEnd/img/logo.png')}}" alt="">
+                        <img src="{{asset('public/FrontEnd/img/logo.png')}}" alt="">
                     </a>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
-                        <ul>
+                        <ul style="float: left ;">
                             <li class="active"><a href="{{route('home')}}">Homepage</a></li>
                             <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
                                 <ul class="dropdown">
@@ -20,7 +20,7 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="{{route('blog')}}">Our Blog</a></li>
+                            {{-- <li><a href="{{route('blog')}}">Our Blog</a></li> --}}
                         </ul>
                     </nav>
                 </div>

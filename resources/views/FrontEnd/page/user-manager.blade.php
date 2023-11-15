@@ -14,11 +14,12 @@
 
 {{-- main content --}}
 @section('main_content')
-    <h3 style="color: aliceblue">trang quản lý user</h3>
+    <h3 style="color: aliceblue">trang quản lý user</h3><br>
 
 
 
-    <a href="{{route("logout")}}">đăng xuất</a>
+    <a href="{{route("logout")}}">đăng xuất</a><br>
+    <a href="{{route("admin")}}">qua trang admin</a>
 
 @endsection
 

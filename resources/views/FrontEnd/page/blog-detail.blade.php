@@ -2,7 +2,72 @@
 
 {{-- link css --}}
 @section('link_css')
-    
+    <style>
+.modal{
+    background: rgba(0,0,0,0.6);
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+} 
+.modal__inner{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    width: 340px;
+    margin: 0 auto;
+    background-color: aliceblue;
+    transform: translateY(90%);
+}
+
+.modal__header{
+    height: 50px;
+    background-color: rgb(249, 103, 103);
+    padding-left: 10px;
+    color: aliceblue;
+    font-size: large;
+}
+.modal__header h5{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.modal__body{
+    padding: 10px;
+    line-height: 30px;
+}
+.modal__body h4{
+    color:rgb(249, 103, 103) ;
+}
+
+.modal__footer button{
+    margin: unset;
+    float: right;
+    background-color:rgb(249, 103, 103) ;
+    margin: 10px;
+    color: aliceblue;
+}
+.hidden{
+    display: block;
+}
+.blog__details__comment__item__text button {
+    border: unset;
+	display: inline-block;
+	color: #ffffff;
+	background: rgba(255, 255, 255, 0.1);
+	padding: 6px 20px;
+	letter-spacing: 2px;
+	border-radius: 2px;
+	margin-right: 14px;
+	-webkit-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+}
+
+.blog__details__comment__item__text button:hover {
+	background: #e53637;
+}
+    </style>
 @endsection
 
 {{-- banner content --}}
@@ -80,7 +145,18 @@
                             <a href="#">Sport</a>
                             <a href="#">Game</a>
                         </div>
-                        @include('FrontEnd.block.review-blog')    
+                        @include('FrontEnd.block.review-blog') 
+                        <div class="blog__details__form">
+                            <h4>Leave A Commnet</h4>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <textarea placeholder="Message"></textarea>
+                                        <button type="submit" class="site-btn">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>   
                     </div>
                 </div>
             </div>

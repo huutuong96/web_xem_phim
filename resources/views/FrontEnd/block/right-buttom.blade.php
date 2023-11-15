@@ -5,7 +5,7 @@
     @foreach ($new as $item)
         <div class="product__sidebar__comment__item">
             <div class="product__sidebar__comment__item__pic">
-                <img src="{{asset('FrontEnd/img/film/'.$item->film_image.'')}}" alt="" height="115px">
+                <img src="{{asset('public/FrontEnd/img/film/'.$item->film_image.'')}}" alt="" height="115px">
             </div>
             <div class="product__sidebar__comment__item__text">
                 <ul>

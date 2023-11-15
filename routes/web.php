@@ -1,9 +1,14 @@
 <?php
 
+use App\Http\Controllers\BackEnd\BannerController;
 use App\Http\Controllers\BackEnd\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\BackEnd\Dashboard;
+use App\Http\Controllers\BackEnd\FilmController;
+use App\Http\Controllers\BackEnd\UserController;
+use App\Http\Controllers\BackEnd\CategoryController;
+// use GuzzleHttp\Middleware;
 
 // use App\Http\Middleware\UserAthenticate;
 // use App\Http\Kernel;
@@ -19,6 +24,7 @@ Route::prefix('/')->group(function () {
     //anime details , watching
     Route::get('anime/detail',[HomeController::class, "show_anime_detail"])->name('anime-detail');
     Route::get('anime/watching',[HomeController::class, "show_anime_watch"])->name('anime-watching');
+    Route::post('search',[FilmController::class, "search"])->name('search');
 
     //blog
     Route::get('blog',[HomeController::class, "show_blog"])->name('blog');
@@ -40,11 +46,39 @@ Route::prefix('/')->group(function () {
 
     //comment
     Route::get('comments',[CommentController::class, "index"])->name("all_comments");
-    Route::get('add_comment',[CommentController::class, "create"])->name("add_comment");
+    Route::get('add_comment',[CommentController::class, "create"])->Middleware("user")->name("add_comment");
 });
 
 //back end
 
 Route::prefix("admin")->middleware("user")->group(function(){
-    Route::get('/',[Dashboard::class, "index"]);
+    Route::get('/',[Dashboard::class, "index"])->name("admin");
+
+    //banner
+    Route::get('banner',[BannerController::class, "index"])->name("banner");
+    Route::get('delete_banner',[BannerController::class, "delete"])->name("delete_banner");
+    Route::post('add_banner',[BannerController::class, "create"])->name('add_banner');
+    Route::get('edit_banner',[BannerController::class, "edit"])->name("edit_banner");
+
+    //category
+    Route::get('category',[CategoryController::class, "index"])->name("category");
+    Route::get('add_category',[CategoryController::class, "create"])->name("add_category");
+    Route::post('add_category',[CategoryController::class, "hendln_create"])->name("add_category");
+    Route::get('fix_category',[CategoryController::class, "edit"])->name("fix_category");
+    Route::get('delete_category',[CategoryController::class, "destroy"])->name("delete_category");
+
+    //comment
+    Route::get('admin_comment',[CommentController::class, "admin_index"])->name("admin_all_comments");
+
+    //film
+    Route::get('film',[FilmController::class, "index"])->name("film");
+    Route::get('add_film',[FilmController::class, "create"])->name("add_film");
+    Route::post('add_film',[FilmController::class, "hendln_create"])->name("add_film");
+    Route::get('edit_film',[FilmController::class, "index"])->name("edit_film");
+    Route::get('delete_film',[FilmController::class, "index"])->name("delete_film");
+    //user
+    Route::get('user',[UserController::class, "index"])->name("users");
+    Route::get('add_user',[UserController::class, "index"])->name("add_users");
+    Route::get('edit_user',[UserController::class, "index"])->name("edit_users");
+    Route::get('delete_user',[UserController::class, "index"])->name("delete_users");
 });

@@ -21,7 +21,7 @@
                     <div class="breadcrumb__links">
                         <a href="#"><i class="fa fa-home"></i> Home</a>
                         <a href="#">Categories</a>
-                        <a href="#">{{$categori}}</a>
+                        <a href="#">{{$categories}}</a>
                         <span>{{$film->film_name}}</span>
                     </div>
                 </div>

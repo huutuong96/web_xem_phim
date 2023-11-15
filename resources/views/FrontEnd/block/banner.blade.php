@@ -3,7 +3,7 @@
         <div class="hero__slider owl-carousel">
             @foreach ($banners as $item)
              
-                <div class="hero__items set-bg" data-setbg="FrontEnd/img/banner/{{$item->image}}" style="image-rendering: pixelated;">
+                <div class="hero__items set-bg" data-setbg="public/FrontEnd/img/banner/{{$item->image}}" style="image-rendering: pixelated;">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">

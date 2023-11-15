@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\film;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,17 +17,17 @@ class HomeController extends Controller{
     protected $arr_top;
 
     function __construct() {
-        $this->banners = DB::table("banner")->get();
-        $this->categoris = DB::table("categori")->get();
-        $this->arr_new = DB::table("film")->orderBy('id_film', 'desc')->limit(4)->get();
-        $this->arr_top = DB::table("film")->orderBy('id_film', 'asc')->limit(5)->get();
+        $this->banners = DB::table("banners")->get();
+        $this->categoris = DB::table("categories")->get();
+        $this->arr_new = DB::table("films")->orderBy('id_film', 'desc')->limit(4)->get();
+        $this->arr_top = DB::table("films")->orderBy('id_film', 'asc')->limit(5)->get();
     }
 
     function index(){
         $arr_film = [];
         foreach ($this->categoris as $item) {
             $title = ["id_categori" => $item->id_categori, "name_categori" => $item->name_categori];
-            $list_film = DB::table('film')->where("id_categori", $item->id_categori)->limit(6)->get();
+            $list_film = DB::table('films')->where("id_categori", $item->id_categori)->limit(6)->get();
             if(isset($list_film[0])){
                 $arr_film[] = [$title, $list_film];    
             }
@@ -41,9 +42,18 @@ class HomeController extends Controller{
     // show film by categori
     function show_categori(Request $request){
         $arr = [];
-        $categori = DB::table("categori")->where("id_categori", $request->id)->get();
-        $title = ["id_categori" => $categori[0]->id_categori, "name_categori" => $categori[0]->name_categori];
-        $list_film = DB::table("film")->where("id_categori", $request->id)->limit(18)->get();
+        $categori = DB::table("categories")->where("id_categori", $request->id)->get();
+
+        if(session('search')){
+            $title = session('search');
+            
+            $list_film = DB::table("films")->where("film_name","like", '%'.$title.'%')->limit(18)->get();
+        }else{
+            $title = ["id_categori" => $categori[0]->id_categori, "name_categori" => $categori[0]->name_categori];
+            $list_film = DB::table("films")->where("id_categori", $request->id)->limit(18)->get();
+        }
+        
+       
         $arr []= [$title, $list_film];
         return view("FrontEnd.page.categori",["arr" => $arr,
                                               "new" => $this->arr_new,
@@ -53,25 +63,22 @@ class HomeController extends Controller{
 
     // film
     function show_anime_detail(Request $request){
-        $film = DB::table("film")->where("id_film", $request->id)->get();
-        // $comments = DB::table("comments")->join("users", "users.id", "=", "comments.id_user")->where("id_film", $request->id)->orderBy("date","DESC")->limit(4)->get();
-        // dd(\Carbon\Carbon::parse($comments[0]->date)->format('H:i:s') );
-    
+        $film = DB::table("films")->where("id_film", $request->id)->get();
         $user = $request->session()->get('user');
         return view("FrontEnd.page.anime-detail",["categoris" => $this->categoris,
                                                 "top_view"=>$this->arr_top,
-                                                // "comments"=>$comments,
                                                 "user"=>$user,
                                                 "film" => $film[0]]);
          
     }
 
     function show_anime_watch(Request $request){
-        $film = DB::table("film")->where("id_film", $request->id)->get();
+        // $film = DB::table("film")->where("id_film", $request->id)->get();
+        $film =film::orderBy("id_film", "DESC")->WHERE("id_film", $request->id)->get();
         $comments = DB::table("comments")->join("users", "users.id", "=", "comments.id_user")->where("id_film", $request->id)->get();
-        $categori = DB::table("categori")->where("id_categori", $film[0]->id_categori)->value("name_categori");
+        $categori = DB::table("categories")->where("id_categori", $film[0]->id_categori)->value("name_categori");
         return view("FrontEnd.page.anime-watching",["categoris" => $this->categoris,
-                                                    "categori" =>  $categori,
+                                                    "categories" =>  $categori,
                                                     "comments"=>$comments,
                                                     "film"=> $film[0]]);
                                                     
@@ -90,7 +97,7 @@ class HomeController extends Controller{
     // login
     function login(Request $request){
         if(auth::check()){
-            $user = $request->session()->get("user");
+            $user = $request->session()->get("users");
             return view("FrontEnd.page.user-manager")->with(["user"=> $user,
                                                              "categoris" => $this->categoris]);
         };

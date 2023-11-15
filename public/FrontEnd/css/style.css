@@ -1543,8 +1543,8 @@ ol {
 }
 
 .blog__details__btns {
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	/* border-top: 1px solid rgba(255, 255, 255, 0.2); */
+	/* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
 	padding: 20px 0 15px;
 	margin-bottom: 65px;
 }
@@ -1619,7 +1619,7 @@ ol {
 	margin-bottom: 25px;
 }
 
-.blog__details__comment__item__text a {
+/* .blog__details__comment__item__text button {
 	display: inline-block;
 	color: #ffffff;
 	background: rgba(255, 255, 255, 0.1);
@@ -1632,9 +1632,9 @@ ol {
 	transition: all, 0.3s;
 }
 
-.blog__details__comment__item__text a:hover {
+.blog__details__comment__item__text button:hover {
 	background: #e53637;
-}
+} */
 
 .blog__details__form {
 	padding-top: 50px;

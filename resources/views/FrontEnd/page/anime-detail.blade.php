@@ -2,7 +2,7 @@
 
 {{-- link css --}}
 @section('link_css')
-    
+
 @endsection
 
 {{-- banner content --}}
@@ -36,7 +36,7 @@
             <div class="anime__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="{{asset('FrontEnd/img/film/'.$film->film_image.'')}}">
+                        <div class="anime__details__pic set-bg" data-setbg="{{asset('public/FrontEnd/img/film/'.$film->film_image.'')}}">
                             <div class="comment"><i class="fa fa-comments"></i> 11</div>
                             <div class="view"><i class="fa fa-eye"></i> {{$film->view}}</div>
                         </div>
@@ -94,7 +94,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8" >
-                        <div class="anime__details__review" id="show_comment">
+                        <div class="anime__details__review" id="show_comment" style="width: 80%">
                                 {{-- binh luan dc show o day --}}
                         </div>
                          <div class="anime__details__form">
@@ -133,11 +133,11 @@
                 var content = $("#input_content").val();
                 // alert("bình luận : "+content)
                 
-                $.get("{{route("add_comment")}}", {"id_film":{{$film->id_film}}, "rule": rule, "content": content}, function(data) { show_comment();});
+                $.get("{{route("add_comment")}}", {"id_film":{{$film->id_film}}, "rule": rule, "content": content}, function(data) { show_comment()});
             })
         })
         function show_comment() {
-            $.get("{{route("all_comments")}}",{"id": {{$film->id_film}} },function (data) {
+            $.get('{{route("all_comments")}}',{"id": {{$film->id_film}} },function (data) {
                 $("#show_comment").html(data);
                 })
             $("#input_content").val("")

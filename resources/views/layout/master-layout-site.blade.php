@@ -15,14 +15,14 @@
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/plyr.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('FrontEnd/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/plyr.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('public/FrontEnd/css/style.css')}}" type="text/css">
     @yield('link_css')
 </head>
 
@@ -53,14 +53,14 @@
 <!-- Search model end -->
 
 <!-- Js Plugins -->
-<script src="{{asset('FrontEnd/js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{asset('FrontEnd/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('FrontEnd/js/player.js')}}"></script>
-<script src="{{asset('FrontEnd/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{asset('FrontEnd/js/mixitup.min.js')}}"></script>
-<script src="{{asset('FrontEnd/js/jquery.slicknav.js')}}"></script>
-<script src="{{asset('FrontEnd/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('FrontEnd/js/main.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/player.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/mixitup.min.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/jquery.slicknav.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('public/FrontEnd/js/main.js')}}"></script>
 @yield('link_js')
 
 

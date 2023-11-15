@@ -12,6 +12,7 @@
 
 {{-- main content --}}
 @section('main_content')
+
     <section class="product spad">
         <div class="container">
             <div class="row">

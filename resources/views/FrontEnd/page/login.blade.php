@@ -75,9 +75,5 @@
 @endsection
 
 @section('link_js')
-    @if(session('msg'))
-        <script>
-            alert("Bạn phải đăng nhập trước khi bình luận")
-        </script>
-    @endif
+    
 @endsection

@@ -13,17 +13,6 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        <h3 class="card-title font-weight-bold py-2">Danh sách danh mục</h3>
-                        <div class="card-tools">
-                            <a class="btn btn-primary" href="{{route('add_category')}}">
-                                <i class="fa fa-plus"></i> Thêm mới
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <table id="datatable" style="width:100%" class="display table table-bordered table-striped table-hover">
                         <thead>

@@ -53,7 +53,7 @@ foreach ($category_list as $item) {
                         <h3 class="card-title font-weight-bold py-2">Thêm danh mục</h3>
                         <div class="card-tools">
                             <button type="submit" name="UPDATE" class="btn btn-success"><i class="fa fa-save"></i> Lưu[Thêm]</button>
-                            <a class="btn btn-secondary" href="index.php?option=category">
+                            <a class="btn btn-secondary" href="{{route("category")}}">
                                 <i class="fa fa-arrow-left"></i> Thoát
                             </a>
                         </div>

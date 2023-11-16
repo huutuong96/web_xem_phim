@@ -11,23 +11,17 @@
 @section('admin-content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Quản lý sản phẩm</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Tất cả sản phẩm</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content-header -->
+  
+    <?php
+            $message = Session::get('message');
+            if (isset($message)) {
+                echo '<p class=" text-muted  style="color:green; margir-left:30px; front-size:20px""> <strong>Thông báo : </strong>'.$message.'</p>';
+                Session::put('message',null);
+            }else {
+                echo '<p class="text-muted mb-4 mt-3">.</p>';
+            } 
+
+   ?>
 
     <!-- Main content -->
     <section class="content">
@@ -37,7 +31,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
-                                <h3 class="card-title font-weight-bold py-2">Danh sách sản phẩm</h3>
+                                <h3 class="card-title font-weight-bold py-2">Danh sách film</h3>
                                 <div class="card-tools">
                                     <a class="btn btn-primary" href="{{route("add_film")}}">
                                         <i class="fa fa-plus"></i> Thêm mới
@@ -88,8 +82,8 @@
                                             
                                             <td class="text-center">
                                                
-                                                <a class="btn btn-sm btn-info" href="index.php?option=product&act=update&id=<?= $row['id']; ?>"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-sm btn-danger" href="index.php?option=product&act=deltrash&id=<?= $row['id']; ?>"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-sm btn-info" href="{{route("edit_film", "id=".$row['id_film'])}}"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-danger" href="{{route("delete_film", "id=".$row['id_film'])}}"><i class="fa fa-trash"></i></a>
                                             </td>
                                          
                                         </tr>

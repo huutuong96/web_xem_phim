@@ -74,11 +74,13 @@ Route::prefix("admin")->middleware("user")->group(function(){
     Route::get('film',[FilmController::class, "index"])->name("film");
     Route::get('add_film',[FilmController::class, "create"])->name("add_film");
     Route::post('add_film',[FilmController::class, "hendln_create"])->name("add_film");
-    Route::get('edit_film',[FilmController::class, "index"])->name("edit_film");
-    Route::get('delete_film',[FilmController::class, "index"])->name("delete_film");
+    Route::get('edit_film',[FilmController::class, "edit"])->name("edit_film");
+    Route::post('edit_film',[FilmController::class, "hendln_edit"])->name("edit_film");
+    Route::get('delete_film',[FilmController::class, "destroy"])->name("delete_film");
     //user
     Route::get('user',[UserController::class, "index"])->name("users");
-    Route::get('add_user',[UserController::class, "index"])->name("add_users");
-    Route::get('edit_user',[UserController::class, "index"])->name("edit_users");
+    Route::get('add_user',[UserController::class, "create"])->name("add_users");
+    Route::post('add_user',[UserController::class, "hendln_create"])->name("add_users");
+    Route::get('rule_edit',[UserController::class, "rule_edit"])->name("rule_edit");
     Route::get('delete_user',[UserController::class, "index"])->name("delete_users");
 });

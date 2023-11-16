@@ -66,7 +66,7 @@
                             
                             <button type="submit" name="INSERT" class="btn btn-primary " style="font-size: large;color: rgb(54, 42, 219);margin-right: 20px"><i class="fa fa-save"></i> Lưu[Thêm]</button>
                             <a class="btn btn-primary" href="{{route('category')}}">
-                                <i class="fa fa-arrow-left"></i> Thoát
+                                <i class="{{route("category")}}"></i> Thoát
                             </a>
                         </div>
                     </div>
